@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enhanced Registration Form</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== GLOBAL RESET ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+transition:0.3s;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+width:420px;
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 15px 40px rgba(0,0,0,0.25);
+animation:fadeIn 0.8s ease;
+}
+
+/* animation */
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== HEADER ===== */
+h2{
+text-align:center;
+margin-bottom:15px;
+}
+
+/* ===== PROGRESS BAR ===== */
+progress{
+width:100%;
+height:10px;
+margin-bottom:15px;
+}
+
+/* ===== FORM GROUP ===== */
+.form-group{
+margin-bottom:12px;
+position:relative;
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-bottom:5px;
+}
+
+/* ===== INPUTS ===== */
+input, select{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:8px;
+outline:none;
+transition:0.3s;
+}
+
+input:focus, select:focus{
+border-color:#2575fc;
+box-shadow:0 0 5px rgba(37,117,252,0.5);
+}
+
+/* ICON INPUT */
+.input-icon{
+position:relative;
+}
+
+.input-icon i{
+position:absolute;
+top:38px;
+left:10px;
+color:#888;
+}
+
+.input-icon input{
+padding-left:30px;
+}
+
+/* ===== BUTTON ===== */
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:linear-gradient(45deg,#2575fc,#6a11cb);
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== DARK MODE ===== */
+.dark{
+background:#111;
+}
+
+.dark .container{
+background:#222;
+color:white;
+}
+
+.dark input,
+.dark select{
+background:#333;
+color:white;
+border:1px solid #555;
+}
+
+/* ===== PASSWORD STRENGTH ===== */
+#strength{
+font-size:12px;
+margin-top:5px;
+display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>User Registration</h2>
+
+<progress id="progress" value="0" max="100"></progress>
+
+<form id="regForm">
+
+<!-- PROFILE -->
+<div class="form-group">
+<label>Profile Picture</label>
+<input type="file" accept="image/*">
+</div>
+
+<!-- FULL NAME -->
+<div class="form-group input-icon">
+<label>Full Name</label>
+<i class="fa fa-user"></i>
+<input type="text" id="fullname" required>
+</div>
+
+<!-- EMAIL -->
+<div class="form-group input-icon">
+<label>Email</label>
+<i class="fa fa-envelope"></i>
+<input type="email" id="email" required>
+</div>
+
+<!-- PHONE -->
+<div class="form-group input-icon">
+<label>Phone</label>
+<i class="fa fa-phone"></i>
+<input type="tel" id="phone" required>
+</div>
+
+<!-- DOB -->
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" id="dob" required>
+</div>
+
+<!-- GENDER -->
+<div class="form-group">
+<label>Gender</label>
+<select id="gender">
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+</div>
+
+<!-- COUNTRY -->
+<div class="form-group">
+<label>Country</label>
+<select id="country">
+<option>India</option>
+<option>USA</option>
+<option>Canada</option>
+<option>UK</option>
+</select>
+</div>
+
+<!-- USERNAME -->
+<div class="form-group input-icon">
+<label>Username</label>
+<i class="fa fa-user-circle"></i>
+<input type="text" id="username" required>
+</div>
+
+<!-- PASSWORD -->
+<div class="form-group input-icon">
+<label>Password</label>
+<i class="fa fa-lock"></i>
+<input type="password" id="password" required>
+<small id="strength"></small>
+</div>
+
+<!-- CONFIRM PASSWORD -->
+<div class="form-group input-icon">
+<label>Confirm Password</label>
+<i class="fa fa-lock"></i>
+<input type="password" id="confirm" required>
+</div>
+
+<!-- TERMS -->
+<div class="form-group">
+<input type="checkbox" id="terms">
+I agree to Terms & Conditions
+</div>
+
+<!-- DARK MODE -->
+<div class="form-group">
+<button type="button" onclick="toggleDark()">🌙 Dark Mode</button>
+</div>
+
+<!-- SUBMIT -->
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+<!-- JS WILL COME IN PART 2 & 3 -->
+
+</body>
+</html>
+
+
+/* ===== SMALL HELP TEXT ===== */
+small{
+color:#666;
+}
+
+/* ===== FORM HOVER EFFECT ===== */
+.form-group:hover label{
+color:#2575fc;
+}
+
+/* ===== INPUT FOCUS ANIMATION ===== */
+input:focus, select:focus{
+transform:scale(1.02);
+}
+
+/* ===== DARK MODE BUTTON ===== */
+button[type="button"]{
+background:#111;
+margin-top:10px;
+}
+
+/* ===== SUCCESS POPUP ===== */
+.popup{
+position:fixed;
+top:20px;
+right:-300px;
+background:#28a745;
+color:white;
+padding:15px 20px;
+border-radius:8px;
+transition:0.5s;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.popup.show{
+right:20px;
+}
+
+/* ===== PROFILE PREVIEW ===== */
+.preview{
+width:80px;
+height:80px;
+border-radius:50%;
+margin-top:10px;
+object-fit:cover;
+display:none;
+border:3px solid #2575fc;
+}
+
+/* ===== PROGRESS BAR STYLE ===== */
+progress{
+appearance:none;
+}
+
+progress::-webkit-progress-bar{
+background:#eee;
+border-radius:10px;
+}
+
+progress::-webkit-progress-value{
+background:linear-gradient(45deg,#2575fc,#6a11cb);
+border-radius:10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:500px){
+.container{
+width:90%;
+padding:20px;
+}
+}
+
+/* ===== SHAKE ERROR ANIMATION ===== */
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
+.error{
+border:2px solid red !important;
+animation:shake 0.3s;
+}
+
+/* ===== DARK MODE IMPROVEMENTS ===== */
+.dark button{
+background:#444;
+}
+
+.dark small{
+color:#ccc;
+}
+
+.dark .popup{
+background:#00c853;
+}
+
+/* ===== SUBTLE CARD GLOW ===== */
+.container:hover{
+box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* ===== INPUT ICON ALIGNMENT FIX ===== */
+.input-icon i{
+top:42px;
+}
+
